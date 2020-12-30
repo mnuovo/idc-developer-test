@@ -17,8 +17,6 @@ import java.util.logging.Logger;
  */
 public class TableComponentDemo {
 
-    private static final Logger log = Logger.getLogger(TableComponentDemo.class.getName());
-
     public static void main(String[] args) throws FileNotFoundException {
 
         //a)Load the input file and transform it into an object
