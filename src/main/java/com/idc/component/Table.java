@@ -100,7 +100,7 @@ public class Table implements IExportable, ISortable {
 
     /**
      * Return the total amount of units for the table
-     * @return
+     * @return Double value representing the sum of all units in the table
      */
     public Double getTotalUnits() {
         return totalUnits;

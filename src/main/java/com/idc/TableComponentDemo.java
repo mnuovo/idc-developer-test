@@ -44,25 +44,25 @@ public class TableComponentDemo {
 
         //c)Ascertain which row contains information about a given vendor
         System.out.println(" *************** c) Ascertain which row contains information about a given vendor ***************");
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Acer").getVendor(), table.indexOfVendor("Acer")));
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Dell"), table.indexOfVendor("Dell")));
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Pluto"), table.indexOfVendor("Pluto")));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Acer").getVendor(), table.indexOfVendor("Acer"));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Dell"), table.indexOfVendor("Dell"));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Pluto"), table.indexOfVendor("Pluto"));
 
         //d)Sort the rows alphabetically (by vendor).
         System.out.println(" *************** d) Sort the rows alphabetically (by vendor) ***************");
         table.sortRowsBy(Sorter.SORT_BY_VENDOR);
         table.printTable();
 
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Acer"), table.indexOfVendor("Acer")));
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Dell"), table.indexOfVendor("Dell")));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Acer"), table.indexOfVendor("Acer"));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Dell"), table.indexOfVendor("Dell"));
 
         //e)Sort the rows by unit values
         System.out.println(" *************** e) Sort the rows by unit values ***************");
         table.sortRowsBy(Sorter.SORT_BY_UNITS);
         table.printTable();
 
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Acer"), table.indexOfVendor("Acer")));
-        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Dell"), table.indexOfVendor("Dell")));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Acer"), table.indexOfVendor("Acer"));
+        System.out.printf((VENDOR_AT_POSITION) + "%n", table.getVendorRow("Dell"), table.indexOfVendor("Dell"));
 
         //f)Export the object structure to HTML
         System.out.println(" *************** f) Export the object structure to HTML ***************");
