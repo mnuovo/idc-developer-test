@@ -10,12 +10,12 @@ import com.idc.loader.Loader;
 
 import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Demo class to demonstrate the functionalities implemented.
  */
 public class TableComponentDemo {
+    private static final String VENDOR_AT_POSITION = "%s is at position %d";
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -44,25 +44,25 @@ public class TableComponentDemo {
 
         //c)Ascertain which row contains information about a given vendor
         System.out.println(" *************** c) Ascertain which row contains information about a given vendor ***************");
-        System.out.println("Acer is at position " + table.indexOfVendor("Acer"));
-        System.out.println("Dell is at position " + table.indexOfVendor("Dell"));
-        System.out.println("Pluto is at position " + table.indexOfVendor("Pluto"));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Acer").getVendor(), table.indexOfVendor("Acer")));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Dell"), table.indexOfVendor("Dell")));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Pluto"), table.indexOfVendor("Pluto")));
 
         //d)Sort the rows alphabetically (by vendor).
         System.out.println(" *************** d) Sort the rows alphabetically (by vendor) ***************");
         table.sortRowsBy(Sorter.SORT_BY_VENDOR);
         table.printTable();
 
-        System.out.println("Acer is at position " + table.indexOfVendor("Acer"));
-        System.out.println("Dell is at position " + table.indexOfVendor("Dell"));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Acer"), table.indexOfVendor("Acer")));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Dell"), table.indexOfVendor("Dell")));
 
         //e)Sort the rows by unit values
         System.out.println(" *************** e) Sort the rows by unit values ***************");
         table.sortRowsBy(Sorter.SORT_BY_UNITS);
         table.printTable();
 
-        System.out.println("Acer is at position " + table.indexOfVendor("Acer"));
-        System.out.println("Dell is at position " + table.indexOfVendor("Dell"));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Acer"), table.indexOfVendor("Acer")));
+        System.out.println(String.format(VENDOR_AT_POSITION, table.getVendorRow("Dell"), table.indexOfVendor("Dell")));
 
         //f)Export the object structure to HTML
         System.out.println(" *************** f) Export the object structure to HTML ***************");

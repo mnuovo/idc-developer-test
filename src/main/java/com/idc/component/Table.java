@@ -2,7 +2,9 @@ package com.idc.component;
 
 import com.idc.enumeration.Quarter;
 import com.idc.enumeration.Sorter;
+import com.idc.export.IExportable;
 import com.idc.input.CsvRows;
+import com.idc.sort.ISortable;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,7 +16,7 @@ import java.util.stream.Collectors;
 /**
  * Class representing a Table object containing the information elaborated from the data.csv file
  */
-public class Table implements Exportable, Sortable{
+public class Table implements IExportable, ISortable {
 
     private final List<Row> rows = new ArrayList<>();
     private Double totalUnits = 0.0;

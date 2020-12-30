@@ -1,9 +1,9 @@
-package com.idc.component;
+package com.idc.export;
 
 /**
  * Interface for exporting object in different formats
  */
-public interface Exportable {
+public interface IExportable {
 
     /**
      * Export to HTML
