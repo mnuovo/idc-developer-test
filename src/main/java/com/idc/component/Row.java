@@ -8,8 +8,8 @@ import java.util.Objects;
  */
 public class Row {
     private final String vendor;
-    private final Double units;
-    private final Double share;
+    private final double units;
+    private final double share;
 
     /**
      * Constructor of the class by setting all the parameters
