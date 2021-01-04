@@ -103,7 +103,7 @@ public class Table implements IExportable, ISortable {
     /**
      * Return a table row representing a specific vendor
      * @param vendor String representing the vendor name
-     * @return a Row object from the table
+     * @return an Optional<Row> object from the table which can be empty if the vendor is not present
      */
     public Optional<Row> getVendorRow(String vendor) {
         return rows.stream()
@@ -116,7 +116,7 @@ public class Table implements IExportable, ISortable {
      * @return List<Row>
      */
     public List<Row> getRows(){
-        return this.rows;
+        return List.copyOf(this.rows);
     }
 
     @Override
