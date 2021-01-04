@@ -7,9 +7,9 @@ import java.util.Objects;
  * Class representing a Row from the Table object
  */
 public class Row {
-    private String vendor;
-    private Double units;
-    private Double share;
+    private final String vendor;
+    private final Double units;
+    private final Double share;
 
     /**
      * Constructor of the class by setting all the parameters
@@ -28,9 +28,7 @@ public class Row {
      * @param vendor String representing the vendor name
      */
     public Row(String vendor){
-        this.vendor = vendor;
-        this.units = 0.0;
-        this.share = 0.0;
+        this(vendor, 0.0, 0.0);
     }
 
     /**
@@ -42,14 +40,6 @@ public class Row {
     }
 
     /**
-     * Set the name of the vendor
-     * @param vendor String
-     */
-    public void setVendor(String vendor) {
-        this.vendor = vendor;
-    }
-
-    /**
      * Return a Double value representing the amount of units sold
      * @return Double
      */
@@ -58,27 +48,11 @@ public class Row {
     }
 
     /**
-     * Set the amount of units sold
-     * @param units Double
-     */
-    public void setUnits(Double units) {
-        this.units = units;
-    }
-
-    /**
      * Return a Double representing the percentage of unit sold compared to the total units
      * @return Double
      */
     public Double getShare() {
         return share;
-    }
-
-    /**
-     * Set the percentage of unit sold compared to the total units
-     * @param share Double
-     */
-    public void setShare(Double share) {
-        this.share = share;
     }
 
     @Override
