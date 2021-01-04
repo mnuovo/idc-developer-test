@@ -6,11 +6,7 @@ import com.idc.export.IExportable;
 import com.idc.input.CsvRows;
 import com.idc.sort.ISortable;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -19,8 +15,7 @@ import java.util.stream.Collectors;
 public class Table implements IExportable, ISortable {
 
     private final List<Row> rows = new ArrayList<>();
-    private Double totalUnits = 0.0;
-
+    private double totalUnits;
 
     /**
      * Constructor of the table object
@@ -45,12 +40,11 @@ public class Table implements IExportable, ISortable {
 
             String vendor = entry.getKey();
             Double units = entry.getValue();
-            Double share = (entry.getValue()*100)/totalUnits;
+            Double share = (units*100)/totalUnits;
 
-            Row row = new Row(vendor, units, share);
-
-            rows.add(row);
+            rows.add(new Row(vendor, units, share));
         }
+
     }
 
     @Override
@@ -74,7 +68,7 @@ public class Table implements IExportable, ISortable {
      * @return the index of the first occurrence of the vendor in the table or -1 if the vendor does not occur.
      */
     public int indexOfVendor(String vendor){
-        return (!rows.contains(new Row(vendor))) ? -1 : rows.indexOf(new Row(vendor))+1;
+        return rows.indexOf(new Row(vendor))+1;
     }
 
     /**
@@ -111,8 +105,10 @@ public class Table implements IExportable, ISortable {
      * @param vendor String representing the vendor name
      * @return a Row object from the table
      */
-    public Row getVendorRow(String vendor){
-        return rows.stream().filter(row -> row.getVendor().equals(vendor)).findAny().orElse(null);
+    public Optional<Row> getVendorRow(String vendor) {
+        return rows.stream()
+                .filter(row -> row.getVendor().equals(vendor))
+                .findAny();
     }
 
     /**
