@@ -65,7 +65,7 @@ public class Table implements IExportable, ISortable {
     /**
      * Ascertain which row contains information about a given vendor
      * @param vendor String representing the vendor name
-     * @return the index of the first occurrence of the vendor in the table or -1 if the vendor does not occur.
+     * @return the index of the first occurrence of the vendor in the table or 0 if the vendor does not occur.
      */
     public int indexOfVendor(String vendor){
         return rows.indexOf(new Row(vendor))+1;
