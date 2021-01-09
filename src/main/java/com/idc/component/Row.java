@@ -1,6 +1,5 @@
 package com.idc.component;
 
-import java.text.DecimalFormat;
 import java.util.Objects;
 
 /**
@@ -9,18 +8,15 @@ import java.util.Objects;
 public class Row {
     private final String vendor;
     private final double units;
-    private final double share;
 
     /**
      * Constructor of the class by setting all the parameters
      * @param vendor String representing a vendor name
      * @param units Double representing number of units
-     * @param share Double representing percentage of units sold compared to the total units
      */
-    public Row(String vendor, Double units, Double share){
+    public Row(String vendor, Double units){
         this.vendor = vendor;
         this.units = units;
-        this.share = share;
     }
 
     /**
@@ -28,7 +24,7 @@ public class Row {
      * @param vendor String representing the vendor name
      */
     public Row(String vendor){
-        this(vendor, 0.0, 0.0);
+        this(vendor, 0.0/*, 0.0*/);
     }
 
     /**
@@ -51,17 +47,8 @@ public class Row {
      * Return a Double representing the percentage of unit sold compared to the total units
      * @return Double
      */
-    public Double getShare() {
-        return share;
-    }
-
-    @Override
-    public String toString() {
-        return "Row{" +
-                "vendor='" + vendor + '\'' +
-                ", units=" + new DecimalFormat("#.##").format(units) +
-                ", share=" + new DecimalFormat("#.##").format(share) +
-                '}';
+    public Double getShare(double totalUnits) {
+        return (units*100)/totalUnits;
     }
 
     @Override
@@ -74,6 +61,6 @@ public class Row {
 
     @Override
     public int hashCode() {
-        return Objects.hash(vendor, units, share);
+        return Objects.hash(vendor, units);
     }
 }

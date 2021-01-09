@@ -24,27 +24,14 @@ public class Table implements IExportable, ISortable {
      */
     public Table(List<CsvRows> rowsList, Quarter quarter){
 
-        Map<String, Double> dataMap = new LinkedHashMap<>();
-
         //Group the values by Vendor and Units
         rowsList.stream()
                 .filter(csvRows -> csvRows.getTimescale().equals(quarter.getQuarter()))
                 .collect(Collectors.groupingBy(CsvRows::getVendor, Collectors.summarizingDouble(CsvRows::getUnits)))
-                .forEach((s, doubleSummaryStatistics) -> {
-                    dataMap.put(s, doubleSummaryStatistics.getSum());
-                    totalUnits += doubleSummaryStatistics.getSum();
+                .forEach((key, value) -> {
+                    totalUnits += value.getSum();
+                    rows.add(new Row(key, value.getSum()));
                 });
-
-        //Create a list of Row representing the table
-        for (Map.Entry<String, Double> entry : dataMap.entrySet()){
-
-            String vendor = entry.getKey();
-            Double units = entry.getValue();
-            Double share = (units*100)/totalUnits;
-
-            rows.add(new Row(vendor, units, share));
-        }
-
     }
 
     @Override
@@ -82,7 +69,7 @@ public class Table implements IExportable, ISortable {
         System.out.println(line);
 
         rows.forEach(row -> {
-            System.out.format("%20s %,10.0f %10.1f", row.getVendor(), row.getUnits(), row.getShare());
+            System.out.format("%20s %,10.0f %10.1f", row.getVendor(), row.getUnits(), row.getShare(totalUnits));
             System.out.println();
         });
 

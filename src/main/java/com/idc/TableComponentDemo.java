@@ -31,6 +31,7 @@ public class TableComponentDemo {
         System.out.println(" ** b) Ascertain the units and share values for a given vendor **");
 
         List<String> vendors = Arrays.asList("Acer", "Dell", "NotThere");
+        final double totalUnits = table.getRows().stream().mapToDouble(Row::getUnits).sum();
 
         vendors.forEach(s -> {
             final Optional<Row> vendorRow = table.getVendorRow(s);
@@ -38,7 +39,7 @@ public class TableComponentDemo {
             if (vendorRow.isPresent()){
                 String vendor = vendorRow.get().getVendor();
                 double units = vendorRow.get().getUnits();
-                double share = vendorRow.get().getShare();
+                double share = vendorRow.get().getShare(totalUnits);
 
                 System.out.printf("%s sold %,.0f units during the given quarter. Percentage share is %.1f%n", vendor, units, share);
 
