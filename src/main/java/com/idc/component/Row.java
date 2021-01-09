@@ -24,7 +24,7 @@ public class Row {
      * @param vendor String representing the vendor name
      */
     public Row(String vendor){
-        this(vendor, 0.0/*, 0.0*/);
+        this(vendor, 0.0);
     }
 
     /**
